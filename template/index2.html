@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{title}}</title>
+	<meta charset="utf-8"/>
+	<meta http-equiv="cache-control" content="no-cache"/>
+	<link rel="stylesheet" href="../vendors/adminLTE/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../vendors/adminlte/dist/css/adminlte.min.css" />
+	<link rel="stylesheet" href="../vendors/adminlte/dist/css/skins/skin-blue.css" />
+	<link rel="stylesheet" href="../vendors/adminlte/plugins/iCheck/square/blue.css" />
+	<link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="skin-blue sidebar-mini">
+	<div ng-app="{{app}}" class="wrapper">
+		<header class="main-header" ng-include="'../header.html'"></header>
+		<aside class="main-sidebar" ng-include="'../sidebar.html'"></aside>
+		<div class="content-wrapper">
+			<div id="wrap">
+				<div ng-view></div>
+			</div>
+		</div>
+		<footer class="main-footer" ng-include="'../footer.html'"></footer>
+	</div>
+	<script src="../vendors/adminLTE/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+	<script src="../vendors/adminLTE/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendors/adminlte/dist/js/app.min.js"></script>
+	<script src="../vendors/adminlte/plugins/iCheck/icheck.min.js"></script>
+	<script src="../vendors/angular/angular.min.js"></script>
+	<script src="../vendors/angular/angular-route.min.js"></script>
+	<script src="../vendors/angular/angular-resource.min.js"></script>
+	<script src="../{{module}}/public/controllers/{{js}}"></script>
+	<script type="text/javascript">
+		var base_url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+		//function
+		function isEmpty(obj) {
+		    for(var key in obj) {
+		        if(obj.hasOwnProperty(key))
+		            return false;
+		    }
+		    return true;
+		}
+
+		function limit(val) {
+			window.location.href = base_url+'/{{url.server}}/#/{{url.public}}?page=1&limit='+val;
+		}
+
+		function limitc(val){
+			$('#limit').val(val);
+		}
+	</script>
+	</body>
+</html>

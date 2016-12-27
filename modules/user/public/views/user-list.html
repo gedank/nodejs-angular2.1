@@ -1,0 +1,67 @@
+<section class="content-header">
+	<h1>AdminLTE Documentation <small>Version 2.3</small></h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+		<li class="active">{{titles}}</li>
+	</ol>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">{{titles}}</h3>
+					<div class="box-tools">
+						<div class="btn-group">
+							<a href="#/users/add" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Tambah</a>
+						</div>
+					</div>
+				</div>
+				<div class="box-body table-responsive no-padding">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th width="20px">No</th>
+								<th>Username</th>
+								<th>Email</th>
+								<th>Name</th>
+								<th>Level</th>
+								<th>Status</th>
+								<th colspan="3" width="5%">Aksi</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in users">
+								<td class="text-center">{{$index + no + 1}}</td>
+								<td>{{user.username}}</td>
+								<td>{{user.email}}</td>
+								<td>{{user.name}}</td>
+								<td>{{user.roles[0]}}</td>
+								<td>{{user.roles[1]}}</td>
+								<td class="text-center">
+									<a href="#/users/edit/{{user._id}}"><i class="fa fa-pencil text-success"></i></a>
+								</td>
+								<td class="text-center">
+									<a href="#/users/del/{{user._id}}"><i class="fa fa-trash text-danger"></i></a>
+								</td>
+								<td class="text-center">
+									<a href="#/users/detail/{{user._id}}"><i class="fa fa-eye text-info"></i></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box-footer clearfix">
+					<div class="pull-left"><span class="btn btn-default pagination-count disabled">Total {{users.length}} dari {{count}} user</span></div>
+					<div class="pull-right">
+						<select class="limit form-control" id="limit" onchange="limit(this.value)">
+							<option>2</option>
+							<option>3</option>
+						</select>
+						<span ng-bind-html="pagination | trust"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
